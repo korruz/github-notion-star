@@ -82,10 +82,8 @@ export class Notion {
                 database_id: databaseId,
             },
             icon: {
-                type: 'external',
-                external: {
-                    url: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-                },
+                type: 'emoji',
+                emoji: 🎲,
             },
             properties: {
                 Name: {
