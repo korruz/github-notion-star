@@ -81,6 +81,12 @@ export class Notion {
             parent: {
                 database_id: databaseId,
             },
+            icon: {
+                type: 'external',
+                external: {
+                    url: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+                },
+            },
             properties: {
                 Name: {
                     type: 'title',
