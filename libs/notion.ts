@@ -81,10 +81,6 @@ export class Notion {
             parent: {
                 database_id: databaseId,
             },
-            icon: {
-                type: 'emoji',
-                emoji: 🎲,
-            },
             properties: {
                 Name: {
                     type: 'title',
