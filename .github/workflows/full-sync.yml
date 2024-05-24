@@ -15,9 +15,9 @@ jobs:
         with:
           always-auth: false
           node-version: 16.x
-          cache: yarn
+          cache: npm
 
-      - run: yarn
+      - run: npm
 
       - name: Run Full Sync
         env:
