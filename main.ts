@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { github } from './libs/github';
 import { notion } from './libs/notion';
 import assert from 'assert';

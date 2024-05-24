@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 import { NotionPage, Repo } from './types';
-import { DatabasesQueryResponse } from '@notionhq/client/build/src/api-endpoints';
+import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { get, save } from './cache';
 
 // TODO: add assertion
@@ -46,7 +46,7 @@ export class Notion {
         let cursor: string | undefined = undefined;
 
         while (hasNext) {
-            const database: DatabasesQueryResponse = await this.notion.databases.query({
+            const database: QueryDatabaseResponse = await this.notion.databases.query({
                 database_id: databaseId,
                 page_size: 100,
                 start_cursor: cursor,
@@ -65,7 +65,7 @@ export class Notion {
 
     addPages(pages: NotionPage[]) {
         pages.forEach((page) => {
-            this.pages[page.properties.Name.title[0].plain_text] = {
+            this.pages[page.properties.Name.title.plain_text] = {
                 id: page.id,
             };
         });
@@ -75,11 +75,17 @@ export class Notion {
 
     async insertPage(repo: Repo) {
         if (repo.description && repo.description.length >= 2000) {
-            repo.description = repo.description.substr(0, 120) + '...'
+            repo.description = repo.description.substr(0, 120) + '...';
         }
         const data = await this.notion.pages.create({
             parent: {
                 database_id: databaseId,
+            },
+            icon: {
+                type: 'external',
+                external: {
+                    url: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+                },
             },
             properties: {
                 Name: {

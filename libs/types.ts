@@ -1,14 +1,14 @@
-import { Page, TitlePropertyValue, URLPropertyValue, SelectOptionWithName } from '@notionhq/client/build/src/api-types';
+import { PageObjectResponse, TitlePropertyItemObjectResponse, LinkPreviewMentionResponse } from '@notionhq/client/build/src/api-endpoints';
 
-export interface RepositoryTopic extends SelectOptionWithName {
+export interface RepositoryTopic {
     name: string;
 }
 
-export interface GithubRepositoryTopic  {
+export interface GithubRepositoryTopic {
     topic: RepositoryTopic;
 }
 
-export interface GithubRepositoryTopicConnection  {
+export interface GithubRepositoryTopicConnection {
     nodes: GithubRepositoryTopic[];
 }
 
@@ -47,9 +47,11 @@ export interface QueryForStarredRepository {
     };
 }
 
-export interface NotionPage extends Page {
-    properties: {
-        Name: TitlePropertyValue;
-        Link: URLPropertyValue;
-    };
+export interface NotionPage extends PageObjectResponse {
+    properties: PageObjectResponse['properties'] & CustomProperties;
+}
+
+interface CustomProperties {
+    Name: TitlePropertyItemObjectResponse;
+    Link: LinkPreviewMentionResponse;
 }

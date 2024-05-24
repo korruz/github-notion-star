@@ -49,7 +49,7 @@ export const pageStore = new (class extends Store<{ cursor: string; pages: Recor
     }
 
     pushPage(page: NotionPage) {
-        this.data.pages[page.properties.Name.title[0].plain_text] = {
+        this.data.pages[page.properties.Name.title.plain_text] = {
             id: page.id,
         };
 
@@ -58,7 +58,7 @@ export const pageStore = new (class extends Store<{ cursor: string; pages: Recor
 
     pushPages(pages: NotionPage[], cursor?: string) {
         pages.forEach((page) => {
-            this.data.pages[page.properties.Name.title[0].plain_text] = {
+            this.data.pages[page.properties.Name.title.plain_text] = {
                 id: page.id,
             };
         });
