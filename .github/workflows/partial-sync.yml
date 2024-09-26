@@ -37,6 +37,7 @@ jobs:
           FULLSYNC_LIMIT: 2000
           PARTIALSYNC_LIMIT: 10
           REPO_TOPICS_LIMIT: 50
+          FULL_SYNC: false
         run: npm start
 
       - uses: actions/upload-artifact@v4
