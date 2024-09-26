@@ -33,7 +33,9 @@ ENVS.forEach((env) => {
 });
 
 if (process.env.FULL_SYNC) {
+    console.log("****Full sync****")
     fullSync();
 } else {
+    console.log("****Partial sync****")
     partialSync();
 }
